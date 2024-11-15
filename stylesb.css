@@ -203,7 +203,7 @@ b{
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 12rem auto 18rem;
+    grid-template-columns: 12rem auto 23rem;
 }
 
 aside{
@@ -307,6 +307,7 @@ aside .sidebar .message-count{
 
 main{
     margin-top: 3rem;
+    margin-left: 30px;
 }
 
 main .analyse{
@@ -624,7 +625,7 @@ main .recent-orders a{
 @media screen and (max-width: 1200px) {
     .container{
         width: 95%;
-        grid-template-columns: 7rem auto 23rem;
+        grid-template-columns: 7rem auto 15rem;
     }
 
     aside .logo h2{
@@ -674,10 +675,27 @@ main .recent-orders a{
     main table tbody tr td:first-child{
         display: none;
     }
+    main{
+        margin-left: 0px;
+    }
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 860px) {
+    .actions {
+        display: flex;
+        gap: 5px;
+      }
+      .add-book-btn {
+        padding: 0.2rem 0.3rem;}
+        .search-container {
+            position: relative;
+            width: 150px;
+          }
+          h1 {
+            font-weight: 800;
+            font-size: 1rem;
+          }          
     .container{
         width: 100%;
         grid-template-columns: 1fr;
@@ -791,4 +809,93 @@ main .recent-orders a{
         font-size: 2rem;
     }
 
+}
+.member-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.member-card {
+    background-color: var(--color-light);
+   
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.profile-photo {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.profile-photo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+
+}
+
+.member-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+
+.member-info p {
+    font-size: 0.9em;
+    color: #555;
+    margin: 4px 0;
+}
+.actions1 {
+    display: flex;
+    justify-content: space-between;
+}
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width:600px) {
+    .actions {
+       
+        justify-content: flex-start;
+    }
+    .member-card {
+        padding: 9px;
+        width: 180px;}
+    
+    
+}
+@media screen and (max-width:450px) {
+    .member-card {
+        padding: 5px;
+        font-size: 0.58rem;
+        width: 143px;}
+        .profile-photo img {
+            width: 50px;
+            height: 50px;
+          }
+    
+    
+}
+
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.8em;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    margin: 0 5px;
+}
+
+.edit-btn {
+    background-color: #cfa23f;
+}
+
+.delete-btn {
+    background-color: #ca3c31;
 }

@@ -7,209 +7,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="Sweet Alert 2/sweetalert2.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>Members - Library Management</title>
-    <style>
-      .form-container {
-            background-color: var(--color-white);
-            padding: var(--card-padding);
-            border-radius: var(--card-border-radius);
-            box-shadow: var(--box-shadow);
-            max-width: 500px;
-            margin: 2rem auto;
-        }
-
-        /* Form Title */
-        .form-container h2 {
-            color: var(--color-dark);
-            font-weight: 600;
-            margin-bottom: .5rem;
-            text-align: center;
-        }
-        .profile-photo-cell img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        /* Image Input */
-        .image-input {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            margin-bottom: 3.5rem;
-        }
-
-        .image-input img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid var(--color-light);
-            object-fit: cover;
-            box-shadow: var(--box-shadow);
-        }
-
-        .image-input label {
-    position: absolute;
- 
-    background-color: var(--color-primary);
-    padding: 0.25rem;
-    border-radius: 100%;
-    cursor: pointer;
-    color: var(--color-white);
-    font-size: 1.1rem;
-    bottom: -42px;}
-
-        .image-input input[type="file"] {
-            display: none;
-        }
-        
-        /* Form Fields */
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            color: var(--color-dark-variant);
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: var(--border-radius-1);
-            border: 1px solid var(--color-light);
-            background-color: var(--color-background);
-            color: var(--color-dark);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: var(--color-primary);
-            outline: none;
-        }
-
-        /* Submit Button */
-        .form-container button {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: var(--border-radius-2);
-            border: none;
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-container button:hover {
-            background-color: var(--color-hover1);
-        }
-    input[type="password"] {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid var(--color-light);
-    border-radius: var(--border-radius-1);
-    font-size: 1rem;
-    background-color: var(--color-white);
-    color: var(--color-dark);
-}
-
-input[type="password"]:focus {
-    border-color: var(--color-primary);
-    outline: none;
-    box-shadow: 0 0 5px var(--color-primary);
-}
-
-        .member-list table {
-    border-collapse: separate;
-    border-spacing: 35px; /* Adjust for the space between columns */
-}
-
-.add {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.4rem 1rem;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: var(--border-radius-1);
-    cursor: pointer;
-    margin-bottom: 0.25rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(108, 155, 207, 0.4);
-    overflow: hidden;
-    position: relative;
-    flex-wrap: wrap;
-    align-content: flex-start;
-}
-
-.add:hover {
-    background-color: var(--color-hover1);
-    box-shadow: 0 8px 15px var(--color-hover2);
-}
-
-.add-text {
-    font-size: 1.2rem;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    transition: color 0.3s ease;
-}
-
-.icon-container {
-    font-size: 2rem;
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.icon-container:hover {
-    color: var(--color-warning);
-    transform: scale(1.2) rotate(15deg);
-}
-
-.add:hover .add-text {
-    color: var(--color-dark);
-}
-
-.add::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%;
-    height: 120%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transform: scale(0);
-    transition: transform 0.3s ease;
-    z-index: 0;
-}
-
-.add:hover::after {
-    transform: scale(1);
-    opacity: 0;
-}
-
-.add h2,
-.add span {
-    position: relative;
-    z-index: 1;
-}
-
-#memberForm{
-    display: none;
-}
-
-    </style>
 </head>
 
 <body>
@@ -254,16 +55,25 @@ input[type="password"]:focus {
 
         <!-- Main Content -->
         <main>
-           
-            
+                <div class="header">
+                    <div class="actions">
+                        <div class="search-container">
+                            <input type="text" id="searchInput" placeholder="Search books...">
+                            <span class="material-icons-sharp">search</span>
+                        </div>
+                        <button class="add-book-btn" onclick="toggleForm()">
+                            <span class="icon-container"><i class="bx bx-add-to-queue"></i></span>
+                            Add New Book
+                        </button>
+                    </div>
+                </div>
 
-            <div class="form-container">
-                <div class="add" onclick="toggleForm()">
+            <div class="form-container" id="memberForm">
+               <!--<div class="add" onclick="toggleForm()">
                     <h2 class="add-text">Add Member</h2>
                     <span class="icon-container"><i class="bx bx-add-to-queue"></i></span>
                 </div>
-                
-                <div id="memberForm">
+                --> 
 
                 
                 <h2>Member Registration</h2>
@@ -307,12 +117,94 @@ input[type="password"]:focus {
             
                     <button type="submit">Register</button>
                 </form>
-            </div>
+            
+        </div>
+        <div class="books-grid">
+            <!-- Book items will be dynamically added here -->
         </div>
             <!-- End of Add Member Form -->
 
             <!-- Member List Table -->
             <div class="member-list">
+                <h2>Current Members</h2>
+                <div class="member-cards">
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="images/profile-2.jpg" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3>John Doe</h3>
+                            <p>Email: johndoe@example.com</p>
+                            <p>Phone: (555) 123-4567</p>
+                            <div class="actions">
+                                <a href="edit-member.html?id=1" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=1" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="images/profile-3.jpg" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p>Email: janesmith@example.com</p>
+                            <p>Phone: (555) 765-4321</p>
+                            <div class="actions">
+                                <a href="edit-member.html?id=2" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=2" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="images/profile-3.jpg" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p>Email: janesmith@example.com</p>
+                            <p>Phone: (555) 765-4321</p>
+                            <div class="actions">
+                                <a href="edit-member.html?id=2" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=2" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="images/profile-3.jpg" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p>Email: janesmith@example.com</p>
+                            <p>Phone: (555) 765-4321</p>
+                            <div class="actions">
+                                <a href="edit-member.html?id=2" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=2" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="images/profile-3.jpg" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p>Email: janesmith@example.com</p>
+                            <p>Phone: (555) 765-4321</p>
+                            <div class="actions1">
+                                <a href="edit-member.html?id=2" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=2" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="member-list">
+                
                 <h2>Current Members</h2>
                 <table>
                     <thead>
@@ -357,7 +249,6 @@ input[type="password"]:focus {
                         </tr>
                     </tbody>
                 </table>
-                <a href="#">Show All</a>
             </div>
             <!-- End of Member List Table -->
 
