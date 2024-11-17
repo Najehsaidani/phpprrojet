@@ -1,0 +1,128 @@
+<div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/logo.png">
+                    <h2>Library<span class="danger">Manager</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashbord.php">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="Books.php" class="active">
+                    <span class="material-icons-sharp">book</span>
+                    <h3>Books</h3>
+                </a>
+                <a href="members.php">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="Borrow.php" >
+                    <span class="material-icons-sharp">sync_alt</span>
+                    <h3>Borrow/Return</h3>
+                </a>
+                <a href="logout.php">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <div class="header">
+                <h1>Books Collection</h1>
+                <div class="actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search books...">
+                        <span class="material-icons-sharp">search</span>
+                    </div>
+                    <button class="add-book-btn">
+                        <span class="material-icons-sharp">add</span>
+                        Add New Book
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+                <select id="availabilityFilter">
+                    <option value="">All Status</option>
+                    <option value="available">Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+            </div>
+
+            <div class="books-grid">
+                <div class="member-list">
+                    <h2>List of books</h2>
+                    <div class="member-cards">
+                        <div class="member-card">
+                            <div class="profile-photo">
+                                <img src="images/profile-2.jpg" alt="Member Photo">
+                            </div>
+                            <div class="member-info">
+                                <h3>John Doe</h3>
+                                <p>Email: johndoe@example.com</p>
+                                <p>Phone: (555) 123-4567</p>
+                                <div class="actions">
+                                    <a href="edit-member.html?id=1" class="edit-btn">Edit</a>
+                                    <a href="delete-member.php?id=1" class="delete-btn">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                <!-- Book items will be dynamically added here -->
+            </div>
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications for Borrow/Return -->
+            
+            <!-- End of Borrow/Return Notifications -->
+
+        </div>
+        <!-- End of Right Section -->
+
+    </div>
+
+    <script src="orders.js"></script>
+    <script src="index.js"></script>

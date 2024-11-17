@@ -1,0 +1,185 @@
+
+<div class="container">
+        
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                   
+                    <h2>Library<span class="danger">Manager</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp mis">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashbord.php">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="Books.php">
+                    <span class="material-icons-sharp">book</span>
+                    <h3>Books</h3>
+                </a>
+                <a href="members.php" class="active">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="Borrow.php" >
+                    <span class="material-icons-sharp">sync_alt</span>
+                    <h3>Borrow/Return</h3>
+                </a>
+                <a href="logout.php">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+            
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+                <div class="header">
+                    <div class="actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search members..." onkeyup="searchMembers()">
+                        <span class="material-icons-sharp">search</span>
+                    </div>
+
+                        <button class="add-book-btn" onclick="toggleForm()">
+                            <span class="icon-container"><i class="bx bx-add-to-queue"></i></span>
+                            Add New Book
+                        </button>
+                    </div>
+                </div>
+
+            <div class="form-container" id="memberForm">
+               <!--<div class="add" onclick="toggleForm()">
+                    <h2 class="add-text">Add Member</h2>
+                    <span class="icon-container"><i class="bx bx-add-to-queue"></i></span>
+                </div>
+                --> 
+
+                
+                <h2>Member Registration</h2>
+                
+                <form action="members.php" method="post" enctype="multipart/form-data">
+                <!-- Profile Image Input -->
+                <div class="image-input">
+                    <img src="https://via.placeholder.com/120" alt="Profile Image" id="profilePreview">
+                    <label for="profileImage"><i class='bx bx-image-add ct'></i></label>
+                    <input type="file" id="profileImage" name="image" accept="image/*" onchange="previewImage(event)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="pass" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="member">Member</option>
+                        <option value="admin">Admin</option>
+                        <option value="staff">Staff</option>
+                    </select>
+                </div>
+
+                <button type="submit">Register</button>
+                </form>
+
+            </div>
+      
+            <!-- End of Add Member Form -->
+
+            <!-- Member List Table -->
+            <div class="member-list">
+                <h2>Current Members</h2>
+                <div class="member-cards">
+                   <?php foreach($data as $a) : ?>
+                    <div class="member-card">
+                        <div class="profile-photo">
+                            <img src="<?= $a['image']?>" alt="Member Photo">
+                        </div>
+                        <div class="member-info">
+                            <h3><?= $a['name']?></h3>
+                            <p>Email: <?= $a['email']?></p>
+                            <p>Phone: <?= $a['number']?></p>
+                            <div class="actions">
+                                <a href="edit-member.php?id=<?= $a['id'] ?>" class="edit-btn">Edit</a>
+                                <a href="delete-member.php?id=<?= $a['id'] ?>" class="delete-btn">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </main>
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of Right Section -->
+
+    </div>
+
+    <script>
+         function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('profilePreview');
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+function toggleForm() {
+    const form = document.getElementById('memberForm');
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}
+
+
+    </script>
+    <script src="orders.js"></script>
+    <script src="index.js"></script>
+    <script src="searchuser.js"></script>

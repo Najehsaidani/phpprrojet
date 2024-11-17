@@ -14,4 +14,6 @@ function handleRegister(event) {
     alert(`Registration successful for ${username}!`);
     // Here, you could add code to send the form data to a server
   }
-  
+  function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById('profilePreview');}

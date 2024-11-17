@@ -1,0 +1,57 @@
+<script src="form.js"></script>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!-- Login Form -->
+    <div id="loginForm" class="card p-4 ">
+        <div class="icon-header">
+            <i class='bx bx-log-in'></i> <h2 class="text-center mb-4">Login</h2>
+        </div>
+        <form action="Login.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+            <p class="text-center switch-container">
+                Don't have an account? <a href="registre.php" >Register here</a>
+            </p>
+        </form>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="card p-4 hidden">
+        <div class="icon-header">
+            <i class='bx bx-user-plus'></i><h2 class="text-center mb-4">Register</h2>
+        </div>
+        <form action="registre.php" method="POST" enctype="multipart/form-data">
+        <div class="image-input">
+                        <img src="https://via.placeholder.com/120" alt="Profile Image" id="profilePreview"> 
+                            <label for="profileImage"><i class='bx bx-image-add ct'></i></label>
+                            <input type="file" id="profileImage" name="profile_image" accept="image/*" onchange="previewImage(event)" required>
+                        </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="name" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="••••••••" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm_password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <p class="text-center switch-container">
+                Already have an account? <a href="Login.php" >Login here</a>
+            </p>
+        </form>
+    </div>
+</div>

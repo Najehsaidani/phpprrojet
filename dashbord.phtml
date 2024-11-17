@@ -1,0 +1,223 @@
+<div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                   
+                    <h2>Library<span class="danger">Manager</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashbord.php" class="active">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="Books.php">
+                    <span class="material-icons-sharp">book</span>
+                    <h3>Books</h3>
+                </a>
+                <a href="members.php">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="Borrow.php">
+                    <span class="material-icons-sharp">sync_alt</span>
+                    <h3> Borrow/Return</h3>
+                </a>
+              
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Library Dashboard</h1>
+            <!-- Library Overview -->
+            <div class="analyse">
+    <div class="books">
+        <div class="status">
+            <div class="info">
+                <h3>Total Books</h3>
+                <h1><?= htmlspecialchars($totalBooks); ?></h1>
+            </div>
+        </div>
+        <span class="material-icons-sharp">menu_book</span>
+    </div>
+    <div class="members">
+        <div class="status">
+            <div class="info">
+                <h3>Total Members</h3>
+                <h1><?= htmlspecialchars($totalMembers); ?></h1>
+            </div>
+        </div>
+        <span class="material-icons-sharp">check_circle</span>
+    </div>
+    <div class="borrowed">
+        <div class="status">
+            <div class="info">
+                <h3>Borrowed Books</h3>
+                <h1><?= htmlspecialchars($borrowedBooks); ?></h1>
+            </div>
+        </div>
+        <span class="material-icons-sharp">pending_actions</span>
+    </div>
+</div>
+
+<!-- New Members Section -->
+<div class="new-users">
+    <h2>New Members</h2>
+    <div class="user-list">
+        <?php foreach ($newMembers as $member): ?>
+            <div class="user">
+                <img src="<?= htmlspecialchars($member['profile_image']); ?>" alt="<?= htmlspecialchars($member['name']); ?>">
+                <h2><?= htmlspecialchars($member['name']); ?></h2>
+                <p>Joined: <?= date('d M Y, H:i', strtotime($member['created_at'])); ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+            <!-- End of Library Overview -->
+
+            <!-- New Members Section -->
+            
+            <!-- End of New Members Section -->
+
+            <!-- Recent Transactions Table -->
+            <div class="recent-transactions">
+                    <h2>Recent Transactions</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Book Title</th>
+                                <th>Member Name</th>
+                                <th>Borrow Date</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($recentTransactions as $transaction): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($transaction['book_title']); ?></td>
+                                    <td><?= htmlspecialchars($transaction['member_name']); ?></td>
+                                    <td><?= htmlspecialchars($transaction['borrow_date']); ?></td>
+                                    <td><?= htmlspecialchars($transaction['return_date']) ?: 'N/A'; ?></td>
+                                    <td><?= ucfirst(htmlspecialchars($transaction['status'])); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+            </div>
+            <!-- End of Recent Transactions -->
+
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+            </div>
+            
+            
+           <div class="reminders">
+           <div class="header">
+                <h2>Reminders</h2>
+                
+                <!-- Notification Icon with Count -->
+                <div class="notification-icon">
+                    <span class="material-icons-sharp dd">notifications</span>
+                    <p id="notification-count" class="ff" ><?= htmlspecialchars($notificationCount); ?></p>
+                </div>
+             </div>
+
+                <!-- Overdue Books Section -->
+                <?php if (!empty($overdueBooks)): ?>
+                    <?php foreach ($overdueBooks as $overdue): ?>
+                        <div class="notification">
+                            <div class="icon">
+                                <span class="material-icons-sharp">warning</span>
+                            </div>
+                            <div class="content">
+                                <h3><?= htmlspecialchars($overdue['book_title']); ?> (Overdue)</h3>
+                                <small>Borrowed by <?= htmlspecialchars($overdue['member_name']); ?>, 
+                                    due <?= date('d M Y', strtotime($overdue['return_date'])); ?></small>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="notification deactive">
+                        <div class="icon">
+                            <span class="material-icons-sharp">done</span>
+                        </div>
+                        <div class="content">
+                            <h3>No Overdue Books</h3>
+                            <small>All books are returned on time.</small>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Upcoming Returns Section -->
+                <?php if (!empty($upcomingBooks)): ?>
+                    <?php foreach ($upcomingBooks as $upcoming): ?>
+                        <div class="notification">
+                            <div class="icon">
+                                <span class="material-icons-sharp">calendar_today</span>
+                            </div>
+                            <div class="content">
+                                <h3><?= htmlspecialchars($upcoming['book_title']); ?> (Due Soon)</h3>
+                                <small>Due by <?= htmlspecialchars($upcoming['member_name']); ?> on <?= date('d M Y', strtotime($upcoming['return_date'])); ?></small>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="notification deactive">
+                        <div class="icon">
+                            <span class="material-icons-sharp">event_available</span>
+                        </div>
+                        <div class="content">
+                            <h3>No Upcoming Returns</h3>
+                            <small>No books are due in the next 3 days.</small>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+
+            <!-- Overdue Notifications -->
+            
+            <!-- End of Overdue Notifications -->
+
+        </div>
+        <!-- End of Right Section -->
+
+    </div>
+   
+    <script src="orders.js"></script>
+    <script src="index.js"></script>
