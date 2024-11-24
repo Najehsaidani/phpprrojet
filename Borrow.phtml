@@ -1,3 +1,13 @@
+<script>
+    function logout() {
+      var a = confirm("Do you want to logout?");
+      if (a) {
+          window.location.href = "fenetre.php";
+      } else {
+          return false;
+      }
+    }
+</script>
 <div class="container">
         <!-- Sidebar Section -->
         <aside>
@@ -28,7 +38,7 @@
                     <span class="material-icons-sharp">sync_alt</span>
                     <h3>Borrow/Return</h3>
                 </a>
-                <a href="logout.php">
+                <a href="#" onclick="logout()">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Logout</h3>
                 </a>
