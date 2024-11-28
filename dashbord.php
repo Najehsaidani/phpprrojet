@@ -42,7 +42,7 @@ $upcomingBooks = $pdo->query("
 $notificationCount = count($overdueBooks) + count($upcomingBooks);
 
 $title = "Dashboard - Library Management";
-$style = "styles/styledashbord.css";
+$style = "styles/styledash.css";
 $page = "dashbord.phtml";
 include 'layout.phtml';
 ?>

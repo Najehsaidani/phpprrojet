@@ -16,7 +16,7 @@
     --border-radius-1: 0.4rem;
     --border-radius-2: 1.2rem;
 
-    --card-padding: 1.8rem;
+    --card-padding: 2rem;
     --padding-1: 1.2rem;
 
     --box-shadow: 0 2rem 3rem var(--color-light);
@@ -39,12 +39,23 @@
     border: 0;
     text-decoration: none;
     box-sizing: border-box;
+}@keyframes fa-shake{0%{-webkit-transform:rotate(-15deg);transform:rotate(-15deg)}4%{-webkit-transform:rotate(15deg);transform:rotate(15deg)}8%,24%{-webkit-transform:rotate(-18deg);transform:rotate(-18deg)}12%,28%{-webkit-transform:rotate(18deg);transform:rotate(18deg)}16%{-webkit-transform:rotate(-22deg);transform:rotate(-22deg)}20%{-webkit-transform:rotate(22deg);transform:rotate(22deg)}32%{-webkit-transform:rotate(-12deg);transform:rotate(-12deg)}36%{-webkit-transform:rotate(12deg);transform:rotate(12deg)}40%,to{-webkit-transform:rotate(0deg);transform:rotate(0deg)}}
+.dd{
+    animation-name: fa-shake;
+  -webkit-animation-duration:1s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count:infinite;
+  animation-iteration-count:infinite;
+  -webkit-animation-timing-function:linear;
+  animation-timing-function:linear;
 }
-
 html{
     font-size: 14px;
 }
-
+.recent-transactions table{
+    border-collapse: separate;
+    border-spacing: 40px;
+}
 body{
     width: 100vw;
     height: 100vh;
@@ -54,6 +65,58 @@ body{
     overflow-x: hidden;
     color: var(--color-dark);
     background-color: var(--color-background);
+}
+.notification.alert .icon {
+    color: red;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.notification-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.notification-icon .material-icons-sharp {
+    font-size: 24px;
+    color: #555;
+}
+
+.notification-icon p {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    margin: 0;
+}
+.ff{
+    position: relative;
+    bottom: 38px;
+    left: 27px;
+    color: red;
+}
+.notification.info .icon {
+    color: blue;
+}
+.notification-header {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
 }
 
 a{
@@ -222,7 +285,7 @@ aside .sidebar .message-count{
 }
 
 main{
-    margin-top: 1.4rem;
+    margin-top: 3rem;
 }
 
 main .analyse{
@@ -353,13 +416,10 @@ main .recent-orders table{
     width: 100%;
     padding: var(--card-padding);
     text-align: center;
+    
     box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
     transition: all 0.3s ease;
-   
-}
-main .borrowed-books table{
-    border-spacing: 15px;
 }
 
 main .recent-orders table:hover{
@@ -602,6 +662,8 @@ main .recent-orders a{
         grid-template-columns: 1fr;
         padding: 0 var(--padding-1);
     }
+    .right-section .profile .profile-photo {
+        display: none;}
 
     aside{
         position: fixed;

@@ -1,7 +1,7 @@
 <?php
 
 $title="Books - Library Management";
-$style="styles/stylesb.css";
+$style="styles/stylesbook.css";
 $page="Books.phtml";
 include 'layout.phtml';
 

@@ -1,13 +1,4 @@
-<script>
-    function logout() {
-      var a = confirm("Do you want to logout?");
-      if (a) {
-          window.location.href = "fenetre.php";
-      } else {
-          return false;
-      }
-    }
-</script> 
+
 <div class="container">
         <!-- Sidebar Section -->
         <aside>
@@ -17,14 +8,12 @@
                     <h2>Library<span class="danger">Manager</span></h2>
                 </div>
                 <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">
-                        close
-                    </span>
+                    <span class="material-icons-sharp mis">close</span>
                 </div>
             </div>
 
             <div class="sidebar">
-                <a href="dashbord.php" class="active">
+                <a href="dashbord.php">
                     <span class="material-icons-sharp">dashboard</span>
                     <h3>Dashboard</h3>
                 </a>
@@ -32,20 +21,20 @@
                     <span class="material-icons-sharp">book</span>
                     <h3>Books</h3>
                 </a>
-                <a href="members.php">
+                <a href="members.php" class="active">
                     <span class="material-icons-sharp">person_outline</span>
                     <h3>Members</h3>
                 </a>
-                <a href="Borrow.php">
+                <a href="Borrow.php" >
                     <span class="material-icons-sharp">sync_alt</span>
-                    <h3> Borrow/Return</h3>
+                    <h3>Borrow/Return</h3>
                 </a>
-              
                 <a href="#" onclick="logout()">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Logout</h3>
                 </a>
             </div>
+            
         </aside>
         <!-- End of Sidebar Section -->
 
