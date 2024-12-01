@@ -1,0 +1,157 @@
+<aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="logo.png" alt="Logo">
+                    <h2>Library<br><span class="danger">Manager</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="../dashbord.php">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="../Books.php">
+                    <span class="material-icons-sharp">book</span>
+                    <h3>Books</h3>
+                </a>
+                <a href="../members.php">
+                    <span class="material-icons-sharp">person_outline</span>
+                    <h3>Members</h3>
+                </a>
+                <a href="borrow.php" class="active">
+                    <span class="material-icons-sharp">sync_alt</span>
+                    <h3>Borrow/Return</h3>
+                </a>
+                <a href="logout.php">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+        <div class="actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search books...">
+                        <span class="material-icons-sharp">search</span>
+                    </div>
+                    <button class="add-book-btn">
+                        <span class="material-icons-sharp">add</span>
+                        Add New Book
+                    </button>
+                </div>
+    <h1 class="form-title">Library System</h1>
+    <div class="form-container">
+        <!-- Borrow Book Form -->
+        
+        <div class="borrow-form">
+        <button class="header-btn borrow-btn" id="borrow-btn">Borrow a Book</button>
+            <form class="hidden" id="borrow" action="borrow.php" method="POST">
+                
+                <input type="hidden" name="action" value="borrow">
+                <label for="member">Member ID:</label>
+                <input type="text" id="member" name="member_id" placeholder="Enter Member ID" required>
+
+                <label for="book">Book ID:</label>
+                <input type="text" id="book" name="book_id" placeholder="Enter Book ID" required>
+
+                <label for="borrow-date">Borrow Date:</label>
+                <input type="date" id="borrow-date" name="borrow_date" required>
+
+                <label for="return-date">Expected Return Date:</label>
+                <input type="date" id="return-date" name="return_date" required>
+
+                <button type="submit" class="btn">Borrow Book</button>
+            </form>
+        </div>
+
+        <!-- Return Book Form -->
+        
+        <!-- Return Book Form -->
+<div class="return-form">
+    <button class="header-btn return-btn" id="return-btn">Return a Book</button>
+    <form class="hidden" id="return" action="borrow.php" method="POST">
+        <input type="hidden" name="action" value="return">
+        <label for="return-member">Member ID:</label>
+        <input type="text" id="return-member" name="member_id" placeholder="Enter Member ID" required>
+
+        <label for="return-book">Book ID:</label>
+        <input type="text" id="return-book" name="book_id" placeholder="Enter Book ID" required>
+
+        <button type="submit" class="btn-return">Return Book</button>
+    </form>
+</div>
+
+    </div>
+
+    <!-- Currently Borrowed Books Table -->
+    <div class="borrowed-books">
+        <button class="header-btn borrowed-books-btn" id="borrowed">Currently Borrowed Books</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Member Name</th>
+                    <th>Borrow Date</th>
+                    <th>Expected Return Date</th>
+                    <th>Status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Vérifier si $rows contient des données
+                if (!empty($rows)) {
+                    $today = date('Y-m-d');
+                    foreach ($rows as $book) {
+                        $status_color = ($today > $book['return_date']) ? 'style="color: red;"' : '';
+                        echo "<tr>
+                                <td>" . ($book['book_title']) . "</td>
+                                <td>" . ($book['member_name']) . "</td>
+                                <td>" . ($book['borrow_date']) . "</td>
+                                <td>" . ($book['return_date']) . "</td>
+                                <td $status_color>Borrowed</td>
+                              </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No books borrowed yet.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="profile-1.jpg" alt="Admin Photo">
+                    </div>
+                </div>
+            </div>
+            <script src="orders.js"></script>
+            <script src="index.js"></script>
+        </div>
+        <!-- End of Right Section -->
